@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TodoApp</string>
+    <string name="title_activity_splash">Todo List</string>
+    <string name="title_activity_on_boarding">OnBoardingActivity</string>
+    <string name="title_activity_insert">InsertActivity</string>
+    <string name="title_activity_up_date">UpDateActivity</string>
+</resources>
