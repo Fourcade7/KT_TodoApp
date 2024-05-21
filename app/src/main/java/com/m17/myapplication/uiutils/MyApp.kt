@@ -16,7 +16,7 @@ class MyApp constructor():Application(){
 
         db= Room.databaseBuilder(
             CONTEXT,
-            AppDatabase::class.java, "TODOSSTATUS"
+            AppDatabase::class.java, "TODOSCategory"
         ).allowMainThreadQueries().build()
     }
 }

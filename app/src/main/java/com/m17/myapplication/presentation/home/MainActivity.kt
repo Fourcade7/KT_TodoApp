@@ -140,6 +140,7 @@ fun MainScreen( modifier: Modifier = Modifier) {
 
 
             }
+            
 
 
         }
@@ -208,7 +209,10 @@ fun LazyItemScreen(todo: Todo) {
                                 uid = todo.uid,
                                 title = todo.title,
                                 description = todo.description,
+                                dataTime2 = todo.dataTime2,
+                                priority = todo.priority,
                                 dataTime = todo.dataTime,
+                                category = todo.category,
                                 status = !todo.status
                             )
                         )
@@ -225,14 +229,42 @@ fun LazyItemScreen(todo: Todo) {
 
 
             ) {
-                MediumText(text = todo.title, fontWeight = FontWeight.Bold, textDecoration = if (todo.status) TextDecoration.LineThrough else TextDecoration.None)
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    MediumText(text = todo.title, fontWeight = FontWeight.Bold, textDecoration = if (todo.status) TextDecoration.LineThrough else TextDecoration.None)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Image(
+                            painter = painterResource(id = when(todo.category){
+                                0->R.drawable.myhome
+                                1->R.drawable.edu
+                                2->R.drawable.work
+                                3->R.drawable.gym
+                                4->R.drawable.money
+                                5->R.drawable.health
+                                6->R.drawable.food
+                                else->R.drawable.myhome
+                            }),
+                            contentDescription = "date",
+                            modifier = Modifier.size(20.dp)
+                        )
+                        SpacerStd(width = 5)
+                        Image(
+                            painter = painterResource(id = if (todo.priority==0) R.drawable.greenpin else if (todo.priority==1) R.drawable.orangepin else R.drawable.redpin),
+                            contentDescription = "date",
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+
+                }
+
                 SpacerStd(height = 10)
                 SmallText(text = todo.description,textDecoration = if (todo.status) TextDecoration.LineThrough else TextDecoration.None)
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.End) {
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
 
 
 
                     SmallText(text = todo.dataTime)
+                    SmallText(text = "до")
+                    SmallText(text = todo.dataTime2)
 
                     //DIALOG
                     if (expanded){
@@ -264,7 +296,7 @@ fun LazyItemScreen(todo: Todo) {
                                             )
                                             Spacer(modifier = Modifier.width(10.dp))
                                             Text(
-                                                text = "edit",
+                                                text = "Редактировать",
 
                                                 fontSize = 13.sp,
                                                 maxLines = 1,
@@ -299,7 +331,7 @@ fun LazyItemScreen(todo: Todo) {
                                             )
                                             Spacer(modifier = Modifier.width(10.dp))
                                             Text(
-                                                text = "delate",
+                                                text = "Удалить",
                                                 fontSize = 13.sp,
                                                 maxLines = 1,
                                                 overflow = TextOverflow.Ellipsis,

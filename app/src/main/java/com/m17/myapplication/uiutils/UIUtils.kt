@@ -50,8 +50,8 @@ import java.util.Date
 
 fun convertMillisToDate(millis: Long): String {
     //https://www.digitalocean.com/community/tutorials/java-simpledateformat-java-date-format
-    //val formatter = SimpleDateFormat("MMMM dd yyyy")
-    val formatter = SimpleDateFormat("dd-MMM HH:mm")
+    //val formatter = SimpleDateFormat("MMMM dd yyyy  HH:mm")
+    val formatter = SimpleDateFormat("dd-MMM")
     return formatter.format(Date(millis))
 }
 

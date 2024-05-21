@@ -19,6 +19,12 @@ class Todo constructor(
     val description:String,
     @ColumnInfo(name = "dataTime")
     val dataTime:String,
+    @ColumnInfo(name = "dataTime2")
+    val dataTime2:String,
+    @ColumnInfo(name = "priority")
+    val priority:Int,
+    @ColumnInfo(name = "category")
+    val category:Int,
     @ColumnInfo(name = "status")
     val status:Boolean=false,
 ):Parcelable
